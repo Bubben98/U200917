@@ -5,11 +5,18 @@
 	<meta charset="utf-8">
 	<title>Ruben C spel</title>
 	<script type="text/javascript" src="js/phaser.min.js"></script>
+	<style>
+		body{
+			background-color: lightcyan;
+		}
+	</style>
 </head>
 <body>
 	<script type="text/javascript">
-	var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update })
-	
+	var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+	var player;
+    var cursors;
+
 	function preload() {
                 game.load.image('sky','assets/sky.png');
 				game.load.image('ground','assets/platform.png');
@@ -17,11 +24,27 @@
             }
             
             function create() {
+			
+
 				game.add.sprite(0,0, 'sky');
             	game.add.sprite(0,0, 'star');
+
+				player = game.add.sprite(32, game.world.height - 150, 'star');
+                game.physics.arcade.enable(player);
+                player.body.collideWorldBounds = true;
+
+				cursors = game.input.keyboard.createCursorKeys();
             }
             
             function update() {
+				player.body.velocity.x = 0;
+
+				if (cursors.left.isDown) {
+					player.body.velocity.x = -100;
+				}
+				else if (cursors.right.isDown) {
+					player.body.velocity.x = 100;
+				}
                                 
             }
 	</script>
