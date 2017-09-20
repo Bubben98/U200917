@@ -3,10 +3,28 @@
 <html lang="sv">
 <head>
 	<meta charset="utf-8">
+	<title>Ruben C spel</title>
+	<script type="text/javascript" src="js/phaser.min.js"></script>
 </head>
 <body>
-<h1>hi</h1>
-<h1>fsfs</h1>
+	<script type="text/javascript">
+	var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update })
+	
+	function preload() {
+                game.load.image('sky','assets/sky.png');
+				game.load.image('ground','assets/platform.png');
+				game.load.image('star','assets/star.png');
+            }
+            
+            function create() {
+				game.add.sprite(0,0, 'sky');
+            	game.add.sprite(0,0, 'star');
+            }
+            
+            function update() {
+                                
+            }
+	</script>
 </body>
 
 </html>
