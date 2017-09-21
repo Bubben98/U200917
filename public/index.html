@@ -20,6 +20,7 @@
 	function preload() {
                 game.load.image('sky','assets/sky.png');
 				game.load.image('ground','assets/platform.png');
+				game.load.image('ground2','assets/platform2.png');
 				game.load.image('star','assets/star.png');
 				game.load.spritesheet('dude', 'assets/dude2.png', 32, 48);
             }
@@ -34,8 +35,12 @@
 				//ground
 				platforms = game.add.group();
                 platforms.enableBody = true;
-                var ground = platforms.create(0, game.world.height - 32, 'ground');
-                ground.scale.setTo(2,1);
+                var ground = platforms.create(0, game.world.height - 32, 'ground2');
+                ground.scale.setTo(1,1);
+				ground.body.immovable = true;
+
+				var ground = platforms.create(400, game.world.height - 32, 'ground2');
+                ground.scale.setTo(1,1);
 				ground.body.immovable = true;
                 
 				//platforms
