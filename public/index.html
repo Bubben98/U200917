@@ -19,8 +19,8 @@
 
 	function preload() {
                 game.load.image('sky','assets/sky.png');
-				game.load.image('ground','assets/platform.png');
-				game.load.image('ground2','assets/platform2.png');
+				game.load.image('platforms','assets/platform.png');
+				game.load.image('grounds','assets/grounds.png');
 				game.load.image('star','assets/star.png');
 				game.load.spritesheet('dude', 'assets/dude2.png', 32, 48);
             }
@@ -28,29 +28,29 @@
             function create() {
 				game.physics.startSystem(Phaser.Physics.ARCADE);
 
-
+				//add background and the star
 				game.add.sprite(0,0, 'sky');
             	game.add.sprite(0,0, 'star');
 
 				//ground
 				platforms = game.add.group();
                 platforms.enableBody = true;
-                var ground = platforms.create(0, game.world.height - 32, 'ground2');
+                var ground = platforms.create(0, game.world.height - 32, 'grounds');
                 ground.scale.setTo(1,1);
 				ground.body.immovable = true;
 
-				var ground = platforms.create(400, game.world.height - 32, 'ground2');
+				var ground = platforms.create(400, game.world.height - 32, 'grounds');
                 ground.scale.setTo(1,1);
 				ground.body.immovable = true;
                 
 				//platforms
-				var ledge = platforms.create(400,450, 'ground');
+				var ledge = platforms.create(400,450, 'platforms');
                 ledge.body.immovable = true;
 
-				var ledge = platforms.create(0,320, 'ground');
+				var ledge = platforms.create(0,320, 'platforms');
                 ledge.body.immovable = true;
 
-				var ledge = platforms.create(590,250, 'ground');
+				var ledge = platforms.create(590,250, 'platforms');
                 ledge.body.immovable = true;
 
 				//player
